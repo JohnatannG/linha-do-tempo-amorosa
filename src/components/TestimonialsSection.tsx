@@ -23,16 +23,16 @@ const TestimonialsSection = () => {
   return (
     <section className="py-20 px-4 bg-muted/20">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Pais emocionados, filhos felizes
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground px-4">
             Veja o que nossos usuários estão dizendo
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}

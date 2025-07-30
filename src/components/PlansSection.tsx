@@ -38,16 +38,16 @@ const PlansSection = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 to-accent/5">
       <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Escolha seu plano
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground px-4">
             Comece grátis ou vá direto para a experiência premium
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <div 
               key={index}

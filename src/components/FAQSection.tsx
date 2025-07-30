@@ -34,11 +34,11 @@ const FAQSection = () => {
   return (
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-3xl">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Perguntas Frequentes
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground px-4">
             Tudo o que você precisa saber
           </p>
         </div>

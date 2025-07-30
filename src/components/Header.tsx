@@ -8,11 +8,12 @@ const Header = () => {
           <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">P</span>
           </div>
-          <span className="text-xl font-bold text-primary">Pai360</span>
+          <span className="text-lg sm:text-xl font-bold text-primary">Pai360</span>
         </div>
         
-        <Button variant="cta" size="default" className="animate-glow-pulse">
-          Criar Meu Presente
+        <Button variant="cta" size="default" className="animate-glow-pulse text-sm sm:text-base px-3 sm:px-4">
+          <span className="hidden sm:inline">Criar Meu Presente</span>
+          <span className="sm:hidden">Criar</span>
         </Button>
       </div>
     </header>

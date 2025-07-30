@@ -1,0 +1,56 @@
+import { Button } from "@/components/ui/button";
+
+const FinalCTASection = () => {
+  return (
+    <section className="py-20 px-4 bg-gradient-to-r from-primary via-primary-glow to-accent text-white relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full"></div>
+        <div className="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-full"></div>
+        <div className="absolute bottom-20 left-32 w-12 h-12 border-2 border-white rounded-full"></div>
+        <div className="absolute bottom-32 right-16 w-24 h-24 border-2 border-white rounded-full"></div>
+      </div>
+
+      <div className="container mx-auto max-w-4xl text-center relative z-10">
+        <div className="space-y-8 animate-fade-in">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+              Seu pai não precisa de mais uma caneca.
+            </h2>
+            <p className="text-xl md:text-2xl opacity-90 leading-relaxed">
+              Ele precisa lembrar de tudo o que vocês viveram.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button 
+              variant="secondary" 
+              size="xl" 
+              className="bg-white text-primary hover:bg-white/90 shadow-glow group min-w-[280px]"
+            >
+              Criar Meu Presente Agora
+              <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            </Button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm opacity-75">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              <span>Criação em 5 minutos</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              <span>Entrega instantânea</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              <span>Garantia de emoção</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FinalCTASection;

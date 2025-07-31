@@ -13,7 +13,7 @@ const Header = () => {
         
         <Button variant="cta" size="default" className="animate-glow-pulse text-sm sm:text-base px-3 sm:px-4">
           <span className="hidden sm:inline">Criar Meu Presente</span>
-          <span className="sm:hidden">Criar</span>
+          <span className="sm:hidden p-6">Criar</span>
         </Button>
       </div>
     </header>

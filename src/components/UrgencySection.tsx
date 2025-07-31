@@ -46,9 +46,6 @@ const UrgencySection = () => {
               Ainda dá tempo de emocionar seu pai neste Dia dos Pais
             </h2>
             
-            <p className="text-lg sm:text-xl opacity-90 px-4 sm:px-0">
-              Encomendas digitais até 11/08 às 23h59
-            </p>
           </div>
 
           {/* Countdown */}

@@ -11,19 +11,15 @@ const FAQSection = () => {
     },
     {
       question: "Posso usar minhas próprias fotos?",
-      answer: "Sim! Você pode fazer upload de suas próprias fotos ou escolher entre nossa galeria de imagens. Recomendamos fotos em boa qualidade para melhor resultado."
+      answer: "Sim! Você pode fazer upload de suas próprias fotos. Recomendamos fotos em boa qualidade para melhor resultado."
     },
     {
       question: "E se eu não conseguir pensar em frases?",
-      answer: "Não se preocupe! Temos mais de 200 frases prontas divididas por categorias (infância, adolescência, vida adulta, etc.). Você também pode personalizar ou combinar frases."
+      answer: "Não se preocupe! Temos uma IA para te ajudar a gerar frases de acordo com o que você." 
     },
     {
-      question: "Posso editar meu presente depois de criado?",
-      answer: "Sim! Você pode editar seu presente quantas vezes quiser durante 30 dias após a criação. Mudanças são salvas automaticamente."
-    },
-    {
-      question: "O plano gratuito tem limitações?",
-      answer: "O plano gratuito permite até 5 blocos e compartilhamento por link. Para mais blocos, PDF premium e designs exclusivos, recomendamos o plano Premium."
+      question: "Qual o melhor plano?",
+      answer: "O plano PREMIUM é o mais escolhido por quem quer criar algo realmente inesquecível — ele libera mais uploads de imagem, mais possibilidades e mais liberdade pra deixar tudo do seu jeito."
     }
   ];
 
@@ -73,15 +69,6 @@ const FAQSection = () => {
               )}
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-muted-foreground mb-4">
-            Ainda tem dúvidas?
-          </p>
-          <a href="mailto:suporte@pai360.com" className="text-primary hover:text-primary/80 font-semibold">
-            Entre em contato conosco
-          </a>
         </div>
       </div>
     </section>

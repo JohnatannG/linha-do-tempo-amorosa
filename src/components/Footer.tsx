@@ -16,22 +16,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Links Úteis</h4>
-            <div className="space-y-2">
-              <a href="/privacidade" className="block text-muted-foreground hover:text-primary transition-colors">
-                Política de Privacidade
-              </a>
-              <a href="/termos" className="block text-muted-foreground hover:text-primary transition-colors">
-                Termos de Uso
-              </a>
-              <a href="/faq" className="block text-muted-foreground hover:text-primary transition-colors">
-                FAQ
-              </a>
-            </div>
-          </div>
-
           {/* Contact */}
           <div className="space-y-4">
             <h4 className="font-semibold text-foreground">Contato</h4>

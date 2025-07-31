@@ -5,7 +5,7 @@ const PlansSection = () => {
   const plans = [
     {
       name: "Gratuito",
-      price: "R$ 0,00",
+      price: "R$ 17,90",
       description: "Perfeito para começar",
       features: [
         "Até 5 blocos (foto + frase)",
@@ -19,10 +19,10 @@ const PlansSection = () => {
     },
     {
       name: "Premium",
-      price: "R$ 29,90",
+      price: "R$ 21,90",
       description: "A experiência completa",
       features: [
-        "Até 30 blocos (foto + frase)",
+        "Até 20 blocos (foto + frase)",
         "PDF elegante para impressão",
         "Designs premium exclusivos",
         "Frases prontas ilimitadas",
@@ -102,7 +102,7 @@ const PlansSection = () => {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground">
-            Todos os planos incluem 30 dias de garantia ou seu dinheiro de volta
+            Todos os planos incluem 7 dias de garantia ou seu dinheiro de volta
           </p>
         </div>
       </div>

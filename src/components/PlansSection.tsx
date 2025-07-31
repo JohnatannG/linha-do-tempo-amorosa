@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 const PlansSection = () => {
   const plans = [
     {
-      name: "Gratuito",
+      name: "Simples",
       price: "R$ 17,90",
       description: "Perfeito para começar",
       features: [

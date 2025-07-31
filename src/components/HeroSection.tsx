@@ -28,9 +28,6 @@ const HeroSection = () => {
                 <span className="text-sm sm:text-base">Criar presente agora</span>
                 <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
               </Button>
-              <Button variant="outline" size="xl" className="w-full sm:w-auto">
-                <span className="text-sm sm:text-base">Ver exemplo</span>
-              </Button>
             </div>
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">

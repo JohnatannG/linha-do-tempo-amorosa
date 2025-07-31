@@ -2,72 +2,86 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Clock, Gift } from "lucide-react";
 
+const targetDate = new Date("2025-08-10T23:59:00");
+
 const UrgencySection = () => {
   const [timeLeft, setTimeLeft] = useState({
-    days: 3,
-    hours: 14,
-    minutes: 32,
-    seconds: 45
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
   });
 
   const [remainingSpots] = useState(42);
 
-  // Fake countdown for demo purposes
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
+    const updateCountdown = () => {
+      const now = new Date();
+      const difference = targetDate - now;
 
-    return () => clearInterval(timer);
+      if (difference <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <section className="py-16 px-4 bg-gradient-primary text-white">
       <div className="container mx-auto max-w-4xl text-center">
         <div className="space-y-6 sm:space-y-8 animate-fade-in">
+          {/* Top badge + headline */}
           <div className="space-y-4">
             <div className="inline-flex items-center space-x-2 bg-white/10 rounded-full px-3 sm:px-4 py-2">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="font-semibold text-sm sm:text-base">Tempo Limitado!</span>
             </div>
-            
+
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold px-4 sm:px-0">
               Ainda dá tempo de emocionar seu pai neste Dia dos Pais
             </h2>
-            
           </div>
 
           {/* Countdown */}
           <div className="grid grid-cols-4 gap-2 sm:gap-4 max-w-xs sm:max-w-md mx-auto px-4 sm:px-0">
-            {[
-              { label: "Dias", value: timeLeft.days },
-              { label: "Horas", value: timeLeft.hours },
-              { label: "Min", value: timeLeft.minutes },
-              { label: "Seg", value: timeLeft.seconds }
-            ].map((item, index) => (
-              <div key={index} className="bg-white/10 rounded-lg p-2 sm:p-4">
-                <div className="text-xl sm:text-3xl font-bold">
-                  {item.value.toString().padStart(2, '0')}
-                </div>
-                <div className="text-xs sm:text-sm opacity-75">
-                  {item.label}
-                </div>
+            <div className="bg-white/10 rounded-lg p-2 sm:p-4">
+              <div className="text-xl sm:text-3xl font-bold">
+                {String(timeLeft.days).padStart(2, "0")}
               </div>
-            ))}
+              <div className="text-xs sm:text-sm opacity-75">Dias</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-2 sm:p-4">
+              <div className="text-xl sm:text-3xl font-bold">
+                {String(timeLeft.hours).padStart(2, "0")}
+              </div>
+              <div className="text-xs sm:text-sm opacity-75">Horas</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-2 sm:p-4">
+              <div className="text-xl sm:text-3xl font-bold">
+                {String(timeLeft.minutes).padStart(2, "0")}
+              </div>
+              <div className="text-xs sm:text-sm opacity-75">Min</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-2 sm:p-4">
+              <div className="text-xl sm:text-3xl font-bold">
+                {String(timeLeft.seconds).padStart(2, "0")}
+              </div>
+              <div className="text-xs sm:text-sm opacity-75">Seg</div>
+            </div>
           </div>
 
-          {/* Limited spots */}
+          {/* Limited Spots */}
           <div className="bg-white/10 rounded-xl p-4 sm:p-6 max-w-xs sm:max-w-md mx-auto">
             <div className="flex items-center justify-center space-x-2 mb-3">
               <Gift className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -81,6 +95,7 @@ const UrgencySection = () => {
             </div>
           </div>
 
+          {/* CTA Button */}
           <div className="px-4 sm:px-0">
             <Button variant="secondary" size="xl" className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto">
               <span className="text-sm sm:text-base">Garantir Minha Vaga Agora</span>

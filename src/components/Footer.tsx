@@ -6,10 +6,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">P</span>
-              </div>
-              <span className="text-xl font-bold text-primary">Pai360</span>
+              <span className="text-xl font-bold text-primary">MemóriaPai</span>
             </div>
             <p className="text-muted-foreground">
               Criando memórias inesquecíveis para pais especiais.
@@ -24,7 +21,7 @@ const Footer = () => {
                 suporte@pai360.com
               </a>
               <a href="tel:+5511999999999" className="block text-muted-foreground hover:text-primary transition-colors">
-                (11) 99999-9999
+                (62) 99121-0362
               </a>
               <p className="text-muted-foreground">
                 Atendimento de seg. à sex. das 9h às 18h

@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { useNavigate } from "react-router-dom"; // Importe useNavigate
 
 const PlansSection = () => {
+  const navigate = useNavigate(); // Chame useNavigate para obter a função de navegação
+
   const plans = [
     {
       name: "Simples",
@@ -15,7 +18,8 @@ const PlansSection = () => {
       ],
       cta: "Criar Meu Presente Agora",
       variant: "outline" as const,
-      popular: false
+      popular: false,
+      checkoutPath: "/checkout-simples" // Adicione o caminho de checkout
     },
     {
       name: "Premium",
@@ -31,7 +35,8 @@ const PlansSection = () => {
       ],
       cta: "Criar Meu Presente Agora",
       variant: "cta" as const,
-      popular: true
+      popular: true,
+      checkoutPath: "/checkout-premium" // Adicione o caminho de checkout
     }
   ];
 
@@ -49,7 +54,7 @@ const PlansSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
-            <div 
+            <div
               key={index}
               className={`relative p-8 bg-card rounded-2xl shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-in-up ${
                 plan.popular ? 'ring-2 ring-accent shadow-glow' : ''
@@ -63,7 +68,7 @@ const PlansSection = () => {
                   </span>
                 </div>
               )}
-              
+
               <div className="space-y-6">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-foreground mb-2">
@@ -88,10 +93,11 @@ const PlansSection = () => {
                   ))}
                 </div>
 
-                <Button 
-                  variant={plan.variant} 
-                  size="lg" 
+                <Button
+                  variant={plan.variant}
+                  size="lg"
                   className="w-full"
+                  onClick={() => navigate(plan.checkoutPath)} // Adicione o onClick para navegação
                 >
                   {plan.cta}
                 </Button>

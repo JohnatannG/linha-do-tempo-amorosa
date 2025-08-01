@@ -13,7 +13,7 @@ const PlansSection = () => {
         "Compartilhamento por link",
         "Suporte por email"
       ],
-      cta: "Começar Grátis",
+      cta: "Criar Meu Presente Agora",
       variant: "outline" as const,
       popular: false
     },

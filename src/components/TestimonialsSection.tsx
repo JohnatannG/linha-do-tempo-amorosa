@@ -1,3 +1,4 @@
+import { StarIcon } from 'lucide-react';
 const TestimonialsSection = () => {
   const testimonials = [
     {
@@ -21,13 +22,13 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-muted/20">
+    <section className="py-20 px-4 bg-[#0B0F1A]"> {/* Neon background */}
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white md:text-[#C5D3FF]"> {/* Neon title color */}
             Pais emocionados, filhos felizes
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground px-4">
+          <p className="text-lg sm:text-xl text-[#DADADA] px-4"> {/* Neon text color */}
             Veja o que nossos usuários estão dizendo
           </p>
         </div>
@@ -37,27 +38,35 @@ const TestimonialsSection = () => {
             <div 
               key={index}
               className="bg-card p-8 rounded-xl shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              style={{ 
+                animationDelay: `${index * 0.2}s`,
+                backgroundColor: '#0B0F1A', // Card background
+                borderColor: '#6C63FF', // Card border
+                borderWidth: '2px', // Border width
+                borderStyle: 'solid', // Border style
+                boxShadow: '0 0 10px #6C63FF', // Initial subtle glow
+                animation: 'pulse 2s infinite', // Pulse animation
+              }}
             >
               <div className="space-y-4">
                 {/* Stars */}
                 <div className="flex space-x-1">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-lg">⭐</span>
+                    <StarIcon key={i} className="w-5 h-5 text-[#6C63FF]" /> {/* Neon star color */}
                   ))}
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-foreground font-medium leading-relaxed">
+                <blockquote className="text-[#DADADA] font-medium leading-relaxed"> {/* Neon text color */}
                   "{testimonial.text}"
                 </blockquote>
 
                 {/* Author */}
-                <div className="pt-4 border-t border-border">
-                  <div className="font-semibold text-foreground">
+                <div className="pt-4 border-t border-[#6C63FF]"> {/* Neon border color */}
+                  <div className="font-semibold text-[#DADADA]"> {/* Neon text color */}
                     {testimonial.author}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-[#DADADA]"> {/* Neon text color */}
                     {testimonial.role}
                   </div>
                 </div>
@@ -65,7 +74,6 @@ const TestimonialsSection = () => {
             </div>
           ))}
         </div>
-
         <div className="mt-12 text-center">
           <div className="inline-flex items-center space-x-4 bg-card rounded-full px-6 py-3 shadow-card">
             <div className="flex space-x-1">
@@ -80,6 +88,17 @@ const TestimonialsSection = () => {
         </div>
       </div>
     </section>
+    
+    <style jsx>{`
+      @keyframes pulse {
+        0% { box-shadow: 0 0 10px #6C63FF; }
+        50% { box-shadow: 0 0 20px #00FFFF, 0 0 30px #6C63FF; }
+        100% { box-shadow: 0 0 10px #6C63FF; }
+      }
+      .hover\\:shadow-elegant:hover {
+        box-shadow: 0 0 20px #6C63FF !important; /* Bright purple shadow on hover */
+      }
+    `}</style>
   );
 };
 

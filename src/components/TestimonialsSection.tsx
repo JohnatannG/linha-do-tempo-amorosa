@@ -52,7 +52,7 @@ const TestimonialsSection = () => {
                 {/* Stars */}
                 <div className="flex space-x-1">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <StarIcon key={i} className="w-5 h-5 text-[#6C63FF]" /> {/* Neon star color */}
+                    <StarIcon key={i} className="w-5 h-5 text-[#6C63FF]" />
                   ))}
                 </div>
 
@@ -88,17 +88,7 @@ const TestimonialsSection = () => {
         </div>
       </div>
     </section>
-    
-    <style jsx>{`
-      @keyframes pulse {
-        0% { box-shadow: 0 0 10px #6C63FF; }
-        50% { box-shadow: 0 0 20px #00FFFF, 0 0 30px #6C63FF; }
-        100% { box-shadow: 0 0 10px #6C63FF; }
-      }
-      .hover\\:shadow-elegant:hover {
-        box-shadow: 0 0 20px #6C63FF !important; /* Bright purple shadow on hover */
-      }
-    `}</style>
+   
   );
 };
 

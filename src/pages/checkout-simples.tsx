@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header'; // Importe o componente Header
 import Footer from '@/components/Footer';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+
+import heroMockup from "../assets/hero-mockup.png"
 
 const CheckoutSimples: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -35,74 +38,73 @@ const CheckoutSimples: React.FC = () => {
   };
 
   return (
-    <div className="from-blue-950 to-purple-950 text-white md:p-8 font-sans">
+    <div className="from-blue-950 to-purple-950 text-white font-sans">
       {/* Adicione o componente Header aqui */}
       <Header isCheckoutHeader={true} />
+      
+      <div className="bg-red-600 text-white text-center text-xl font-bold w-full py-4 mt-[4rem]">
+        Oferta expira em: {formatTime(timeLeft)}
+      </div>
 
-      <div className="container mx-auto max-w-6xl mt-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">Checkout - Plano Simples</h1>
+      <div className="container mx-auto max-w-6xl">
+        <h1 className="bg-gradient-primary bg-clip-text text-transparent font-bold text-2xl mt-4">Carrinho</h1>
+        <Breadcrumb className="mb-4">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Início</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Plano Simples</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
 
-        {/* Fake Countdown */}
-        <div className="text-center text-xl md:text-2xl font-bold text-yellow-400 mb-8">
-          Oferta expira em: {formatTime(timeLeft)}
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
             {/* Payment Methods */}
-            <div className="bg-black bg-opacity-20 p-6 rounded-lg border border-purple-700 shadow-lg">
-              <h2 className="text-2xl font-bold mb-4">Formas de pagamentos</h2>
-              <div className="border border-purple-500 p-4 rounded-md cursor-pointer transition-all duration-300 hover:bg-purple-900 hover:bg-opacity-30">
+            <div className="bg-white text-black border-blue-300 p-6 rounded-lg border shadow-lg">
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">Formas de pagamentos</h2>
+              <div className="border border-blue-300 p-4 rounded-md cursor-pointer transition-all duration-300 hover:bg-blue-300 hover:bg-opacity-30">
                 <div className="flex items-center justify-between">
                   <label htmlFor="stripe" className="flex items-center text-lg font-semibold cursor-pointer">
-                    <input type="radio" name="paymentMethod" id="stripe" className="mr-3 text-purple-500 focus:ring-purple-500" checked readOnly />
+                    <input type="radio" name="paymentMethod" id="stripe" className="mr-3 text-blue-500 focus:ring-blue-500" checked readOnly />
                     Pix
                   </label>
-                  <span className="text-green-400 text-sm font-semibold">Mais rápido</span>
+                  <span className="bg-green-200 bg-opacity-20 text-green-400 text-sm font-semibold border p-1 px-4 rounded-full">Mais rápido</span>
                 </div>
-                <p className="text-sm text-gray-400 mt-1 ml-6">Aprovação imediata</p>
+                <p className="text-sm text-[#6C6C80] mt-1 ml-6">Aprovação imediata</p>
               </div>
                {/* Consider adding a visual indicator for selected method */}
             </div>
 
             {/* Personal Information */}
-            <div className="bg-black bg-opacity-20 p-6 rounded-lg border border-purple-700 shadow-lg">
-              <h2 className="text-2xl font-bold mb-4">Informações Pessoais</h2>
+            <div className="bg-white p-6 rounded-lg border border-blue-300 shadow-lg">
+              <h2 className="bg-gradient-primary bg-clip-text text-transparent text-2xl font-bold mb-4">Informações Pessoais</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-1">
+                  <label htmlFor="firstName" className="block text-sm font-medium text-black text-opacity-60 mb-1">
                     Primeiro Nome
                   </label>
                   <input
                     type="text"
                     id="firstName"
-                    className="w-full p-3 rounded bg-black bg-opacity-30 border border-purple-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                    className="w-full p-3 rounded bg-white border border-blue-300 text-[#1C1C1E] focus:outline-none focus:border-[#6C63FF] focus:ring-1 focus:ring-[#6C63FF] transition duration-200"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-1">
-                    Sobrenome
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className="w-full p-3 rounded bg-black bg-opacity-30 border border-purple-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
               </div>
               <div className="mt-4">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-black text-opacity-60 mb-1">
                   E-mail
                 </label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full p-3 rounded bg-black bg-opacity-30 border border-purple-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                  className="w-full p-3 rounded bg-white border border-blue-300 text-[#1C1C1E] focus:outline-none focus:border-[#6C63FF] focus:ring-1 focus:ring-[#6C63FF] transition duration-200"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -110,11 +112,11 @@ const CheckoutSimples: React.FC = () => {
             </div>
 
             {/* Terms Checkbox and Security Message */}
-            <div className="bg-black bg-opacity-20 p-6 rounded-lg border border-purple-700 shadow-lg">
-               <div className="flex items-center mb-4">
-                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                 <p className="text-sm text-gray-300">
-                   Ao realizar uma compra, você concorda com todos os <a href="#" className="text-purple-400 hover:underline">termos de uso do site</a>.
+            <div className="bg-white p-6 rounded-lg border border-purple-700 shadow-lg">
+               <div className="flex items-center mb-4 text-[#6C6C80]">
+                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#8F5FFF] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                 <p className="text-sm">
+                   Ao realizar uma compra, você concorda com todos os <a href="#" className="text-[#8F5FFF] hover:underline">termos de uso do site</a>.
                  </p>
                </div>
                <div className="flex items-start">
@@ -122,10 +124,10 @@ const CheckoutSimples: React.FC = () => {
                    type="checkbox"
                    id="terms"
                    className="mr-2 mt-1 h-4 w-4 text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500"
-                   checked={termsAccepted}
+                   checked={termsAccepted} // Correctly bind checked state
                    onChange={(e) => setTermsAccepted(e.target.checked)}
                  />
-                 <label htmlFor="terms" className="text-sm text-gray-300 cursor-pointer">
+                 <label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer">
                    Li e aceito os termos de uso
                  </label>
                </div>
@@ -133,26 +135,26 @@ const CheckoutSimples: React.FC = () => {
 
             {/* Payment Button */}
             <button
-              className={`w-full text-xl font-bold py-4 px-6 rounded-lg transition duration-300 text-white
-                         bg-gradient-to-r from-purple-600 to-blue-600
-                         hover:from-blue-600 hover:to-purple-600 shadow-lg hover:shadow-glow-purple
-                         ${!termsAccepted ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`w-full text-xl font-bold py-4 px-6 rounded-lg transition duration-300 
+                          bg-primary text-primary-foreground hover:bg-primary/90
+                          ${!termsAccepted ? 'opacity-50 cursor-not-allowed' : ''}`}
               onClick={handleCheckout}
               disabled={!termsAccepted}
             >
               🔒 Pagar R$17,90
             </button>
+
           </div>
 
           {/* Right Column (Order Summary) */}
           <div className="lg:col-span-1 space-y-8">
-            <div className="bg-black bg-opacity-20 p-6 rounded-lg border border-purple-700 shadow-lg">
-              <h2 className="text-2xl font-bold mb-4">Resumo do pedido</h2>
-              <div className="flex items-center mb-4 border-b border-gray-700 pb-4">
-                <img src="/placeholder.svg" alt="Product Placeholder" className="w-16 h-16 object-cover rounded mr-4 border border-purple-500 flex-shrink-0" />
+            <div className="bg-[#F7F9FC] p-6 rounded-lg border border-blue-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+              <h2 className="text-2xl font-bold mb-4 text-[#1C1C1E]">Resumo do pedido</h2>
+              <div className="flex items-center mb-4 border-b border-blue-300 pb-4">
+                <img src={heroMockup} alt="Product Placeholder" className="w-16 h-16 object-cover rounded mr-4 border border-blue-300 flex-shrink-0" />
                 <div className="flex-grow">
-                  <p className="text-lg font-semibold">Plano Simples</p> {/* Changed to Plano Simples */}
-                  <p className="text-md text-gray-300">R$ 17,90</p> {/* Corrected value */}
+                  <p className="text-lg font-semibold text-[#1C1C1E]">Plano Simples</p> {/* Changed to Plano Simples */}
+                  <p className="text-md text-[#6C6C80]">R$ 17,90</p> {/* Corrected value */}
                 </div>
                  {/* Quantity controls and delete button (optional, based on image) */}
                  {/* Removed quantity controls and delete button as per instruction implicitly by removing the surrounding comment block */}
@@ -160,7 +162,7 @@ const CheckoutSimples: React.FC = () => {
               {/* Removed coupon section */}
 
               <div className="space-y-2 text-right pt-4">
-                <p className="text-xl font-bold">Total: <span className="ml-4">R$ 17,90</span></p> {/* Corrected value */}
+                <p className="text-xl font-bold text-[#1C1C1E]">Total: <span className="ml-4">R$ 17,90</span></p> {/* Corrected value */}
               </div>
 
                {/* Security Message at the bottom of Order Summary */}
@@ -179,11 +181,11 @@ const CheckoutSimples: React.FC = () => {
          </div>
 
         {/* Testimonials below the security badge */}
-        <div className="bg-black mb-8 p-6 rounded-lg border border-purple-700 shadow-lg mt-8">
-          <h2 className="text-2xl font-bold text-center mb-6">O que dizem nossos clientes</h2>
+        <div className="bg-[#F7F9FC] mb-8 p-6 rounded-lg border border-[#8F5FFF] shadow-[0_4px_20px_rgba(0,0,0,0.05)] mt-8">
+          <h2 className="text-2xl font-bold text-center mb-6 text-[#1C1C1E]">O que dizem nossos clientes</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[1, 2, 3].map((index) => (
-              <div key={index} className="bg-black bg-opacity-30 p-6 rounded-md border border-purple-600 shadow-md">
+              <div key={index} className="bg-white p-6 rounded-md border border-[#8F5FFF] shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
                 <div className="flex items-center mb-3">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -196,10 +198,10 @@ const CheckoutSimples: React.FC = () => {
                     </svg>
                   ))}
                 </div>
-                <p className="text-sm text-gray-300 italic mb-4">
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                <p className="text-sm text-[#6C6C80] italic mb-4">
+                  "“Meu pai chorou quando viu. Eu nunca sei o que dar pra ele, mas dessa vez foi certeiro. Simplesmente perfeito!"
                 </p>
-                <p className="text-sm font-semibold text-gray-400">- Cliente Satisfeito {index}</p>
+                <p className="text-sm font-semibold text-[#1C1C1E]">- Cliente Satisfeito {index}</p>
               </div>
             ))}
           </div>

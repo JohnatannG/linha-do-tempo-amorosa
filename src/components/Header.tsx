@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom"; // Importe Link
 
 interface HeaderProps {
@@ -12,19 +11,19 @@ const Header = ({ isCheckoutHeader }: HeaderProps) => {
         <div className="flex items-center space-x-2">
           {/* Use Link se for cabeçalho de checkout, caso contrário use span */}
           {isCheckoutHeader ? (
-            <Link to="/" className="text-lg sm:text-xl font-bold text-primary hover:underline">
+            <Link to="/" className="text-lg sm:text-xl font-bold text-primary">
               MemóriaPai
             </Link>
           ) : (
-            <span className="text-lg sm:text-xl font-bold text-primary">MemóriaPai</span>
+            <span className="text-lg sm:text-xl font-bold text-primary hover:no-underline">MemóriaPai</span>
           )}
         </div>
 
         {!isCheckoutHeader && ( // Oculta o botão "Criar Meu Presente" no checkout
           <a
-          href="#plans"
-          className="animate-glow-pulse text-sm sm:text-base p-3 inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
-        >
+            href="#plans"
+            className="animate-glow-pulse text-sm sm:text-base p-3 inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+          >
           <span className="sm:inline">Criar Meu Presente</span>
         </a>
         

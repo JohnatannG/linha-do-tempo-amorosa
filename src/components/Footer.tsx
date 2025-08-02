@@ -30,7 +30,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="pt-8 border-t border-border text-center">
           <p className="text-muted-foreground">
-            © 2024 Pai360. Todos os direitos reservados. Feito com ❤️ para pais especiais.
+            © 2025 MemóriaPai. Todos os direitos reservados. Feito com ❤️ para pais especiais.
           </p>
         </div>
       </div>

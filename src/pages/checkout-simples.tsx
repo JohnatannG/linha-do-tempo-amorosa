@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 import heroMockup from "../assets/hero-mockup.png"
+import selo from "../assets/quality.png"
 
 const CheckoutSimples: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -175,37 +176,54 @@ const CheckoutSimples: React.FC = () => {
         </div>
 
          {/* Security Badge below the main grid */}
-         <div className="text-center mt-12 mb-8">
-           {/* Replace with your actual security badge image */}
-           <img src="/security-badge.svg" alt="100% Seguro com Stripe" className="mx-auto h-10" />
+         <div className="flex gap-3 items-center justify-items-center w-full  text-center mt-12 mb-8">
+            <img src={selo} alt="100% Seguro com Stripe" className="h-10" />
+            <p className='text-black'>100% Seguro com Stripe</p>
          </div>
 
-        {/* Testimonials below the security badge */}
-        <div className="bg-[#F7F9FC] mb-8 p-6 rounded-lg border border-[#8F5FFF] shadow-[0_4px_20px_rgba(0,0,0,0.05)] mt-8">
-          <h2 className="text-2xl font-bold text-center mb-6 text-[#1C1C1E]">O que dizem nossos clientes</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((index) => (
-              <div key={index} className="bg-white p-6 rounded-md border border-[#8F5FFF] shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
-                <div className="flex items-center mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-sm text-[#6C6C80] italic mb-4">
-                  "“Meu pai chorou quando viu. Eu nunca sei o que dar pra ele, mas dessa vez foi certeiro. Simplesmente perfeito!"
-                </p>
-                <p className="text-sm font-semibold text-[#1C1C1E]">- Cliente Satisfeito {index}</p>
-              </div>
-            ))}
-          </div>
+
+{/* Testimonials below the security badge */}
+<div className="bg-[#F7F9FC] mb-8 p-6 rounded-lg border border-blue-500 shadow-[0_4px_20px_rgba(0,0,0,0.05)] mt-8">
+  <h2 className="text-2xl font-bold text-center mb-6 text-[#1C1C1E]">O que dizem nossos clientes</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {/* Array de depoimentos */}
+    {[
+      {
+        text: "Meu pai chorou quando viu. Eu nunca sei o que dar pra ele, mas dessa vez foi certeiro. Simplesmente perfeito!",
+        author: "Ricardo M",
+      },
+      {
+        text: "A ideia é genial, o site é lindo e o resultado ficou muito melhor do que eu imaginava. Recomendo pra todo mundo que quer fugir do presente clichê.",
+        author: "Luana V",
+      },
+      {
+        text: "Fiz no celular mesmo, em menos de 5 minutos. E a reação do meu pai? Inacreditável. Disse que foi o melhor presente que já ganhou.",
+        author: "Jéssica T",
+      },
+    ].map((testimonial, index) => ( // Itera sobre o array de depoimentos
+      <div key={index} className="bg-white p-6 rounded-md border border-blue-500 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+        <div className="flex items-center mb-3">
+          {[...Array(5)].map((_, i) => (
+            <svg
+              key={i}
+              className="w-5 h-5 text-yellow-400 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
+            </svg>
+          ))}
         </div>
+        <p className="text-sm text-[#6C6C80] italic mb-4">
+          "{testimonial.text}" {/* Usa o texto do depoimento */}
+        </p>
+        <p className="text-sm font-semibold text-[#1C1C1E]">- {testimonial.author}</p> {/* Usa o autor do depoimento */}
+      </div>
+    ))}
+  </div>
+</div>
+
+
 
       </div>
         <Footer/>

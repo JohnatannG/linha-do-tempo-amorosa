@@ -26,7 +26,7 @@ const PlansSection = () => {
       price: "R$ 21,90",
       description: "A experiência completa",
       features: [
-        "Até 20 blocos (foto + frase)",
+        "Até 10 blocos (foto + frase)",
         "PDF elegante para impressão",
         "Designs premium exclusivos",
         "Frases prontas ilimitadas",

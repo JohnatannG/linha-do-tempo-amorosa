@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
 import Header from '@/components/Header'; // Importe o componente Header
-const CheckoutPremium: React.FC = () => { // Passe a prop isCheckoutHeader para o Header
+import Footer from '@/components/Footer';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+
+import heroMockup from "../assets/hero-mockup.png"
+import selo from "../assets/quality.png"
+
+const CheckoutSimples: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,7 +16,7 @@ const CheckoutPremium: React.FC = () => { // Passe a prop isCheckoutHeader para 
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prevTime => (prevTime > 0 ? prevTime - 1 : 0));
+      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
     return () => clearInterval(timer);
   }, []);
@@ -19,210 +24,211 @@ const CheckoutPremium: React.FC = () => { // Passe a prop isCheckoutHeader para 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
   const handleCheckout = () => {
-    if (termsAccepted && firstName && lastName && email) {
-      // Simulate Stripe integration - replace with actual Stripe API call
-      console.log('Processing Premium checkout for:', { firstName, lastName, email, coupon });
-      alert('Simulating checkout. Redirecting to Stripe...');
-      // window.location.href = 'YOUR_STRIPE_CHECKOUT_LINK_HERE';
-    } else {
-      alert('Please fill in all required fields and accept the terms.');
-    }
+    // Integrate with Stripe API here
+    console.log('Processing checkout for Simple plan...');
+    console.log('First Name:', firstName);
+    console.log('Last Name:', lastName);
+    console.log('Email:', email);
+    console.log('Coupon:', coupon);
+    console.log('Terms Accepted:', termsAccepted);
+    // Example: window.location.href = 'STRIPE_CHECKOUT_LINK';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-purple-900 text-gray-100 font-sans">
-      <Header isCheckoutHeader={true} /> {/* Use o Header com a prop */}
-      <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-purple-400 drop-shadow-lg">Checkout - Plano Premium</h1>
+    <div className="from-blue-950 to-purple-950 text-white font-sans">
+      {/* Adicione o componente Header aqui */}
+      <Header isCheckoutHeader={true} />
+      
+      <div className="bg-red-600 text-white text-center text-xl font-bold w-full py-4 mt-[4rem]">
+        Oferta expira em: {formatTime(timeLeft)}
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Left Column: Forms */}
-          <div className="space-y-8">
-            {/* Fake Countdown */}
-            <div className="text-center text-lg font-bold text-yellow-400 p-4 rounded-md bg-gray-800 bg-opacity-60 border border-purple-600">
-              Oferta expira em: <span className="text-red-500">{formatTime(timeLeft)}</span>
-            </div>
+      <div className="container mx-auto max-w-6xl">
+        <h1 className="bg-gradient-primary bg-clip-text text-transparent font-bold text-2xl mt-4">Carrinho</h1>
+        <Breadcrumb className="mb-4">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Início</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Plano Simples</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
 
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-8">
             {/* Payment Methods */}
-            <div className="bg-gray-800 bg-opacity-60 rounded-lg shadow-xl p-6 border border-purple-600">
-              <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-purple-300">Formas de Pagamento</h2>
-              <div className="flex items-center bg-gray-700 bg-opacity-50 rounded-md p-4 border border-purple-500 shadow-inner cursor-pointer">
-                <input
-                  type="radio"
-                  id="stripe"
-                  name="paymentMethod"
-                  className="form-radio text-purple-500 focus:ring-purple-500 mr-3"
-                  defaultChecked
-                  disabled // Stripe is the only option
-                />
-                <label htmlFor="stripe" className="text-lg flex items-center justify-between w-full">
-                  <span>Cartão de Crédito via Stripe</span>
-                  <span className="text-green-400 text-sm font-semibold bg-green-900 bg-opacity-50 px-2 py-1 rounded-full">Aprovação imediata</span>
-                </label>
+            <div className="bg-white text-black border-blue-300 p-6 rounded-lg border shadow-lg">
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">Formas de pagamentos</h2>
+              <div className="border border-blue-300 p-4 rounded-md cursor-pointer transition-all duration-300 hover:bg-blue-300 hover:bg-opacity-30">
+                <div className="flex items-center justify-between">
+                  <label htmlFor="stripe" className="flex items-center text-lg font-semibold cursor-pointer">
+                    <input type="radio" name="paymentMethod" id="stripe" className="mr-3 text-blue-500 focus:ring-blue-500" checked readOnly />
+                    Pix
+                  </label>
+                  <span className="bg-green-200 bg-opacity-20 text-green-400 text-sm font-semibold border p-1 px-4 rounded-full">Mais rápido</span>
+                </div>
+                <p className="text-sm text-[#6C6C80] mt-1 ml-6">Aprovação imediata</p>
               </div>
+               {/* Consider adding a visual indicator for selected method */}
             </div>
 
             {/* Personal Information */}
-            <div className="bg-gray-800 bg-opacity-60 rounded-lg shadow-xl p-6 space-y-6 border border-purple-600">
-              <h2 className="text-xl sm:text-2xl font-semibold text-purple-300">Informações Pessoais</h2>
+            <div className="bg-white p-6 rounded-lg border border-blue-300 shadow-lg">
+              <h2 className="bg-gradient-primary bg-clip-text text-transparent text-2xl font-bold mb-4">Informações Pessoais</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Primeiro Nome"
-                  className="input-field w-full px-4 py-3 rounded-md bg-gray-700 border border-purple-700 focus:border-purple-500 focus:ring-purple-500 focus:ring-1 transition-all duration-300 text-gray-100 placeholder-gray-400"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Sobrenome"
-                  className="input-field w-full px-4 py-3 rounded-md bg-gray-700 border border-purple-700 focus:border-purple-500 focus:ring-purple-500 focus:ring-1 transition-all duration-300 text-gray-100 placeholder-gray-400"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  required
-                />
+                <div>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-black text-opacity-60 mb-1">
+                    Primeiro Nome
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    className="w-full p-3 rounded bg-white border border-blue-300 text-[#1C1C1E] focus:outline-none focus:border-[#6C63FF] focus:ring-1 focus:ring-[#6C63FF] transition duration-200"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <label htmlFor="email" className="block text-sm font-medium text-black text-opacity-60 mb-1">
+                  E-mail
+                </label>
                 <input
                   type="email"
-                  placeholder="E-mail"
-                  className="input-field w-full px-4 py-3 rounded-md bg-gray-700 border border-purple-700 focus:border-purple-500 focus:ring-purple-500 focus:ring-1 transition-all duration-300 text-gray-100 placeholder-gray-400 md:col-span-2"
+                  id="email"
+                  className="w-full p-3 rounded bg-white border border-blue-300 text-[#1C1C1E] focus:outline-none focus:border-[#6C63FF] focus:ring-1 focus:ring-[#6C63FF] transition duration-200"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required
                 />
               </div>
-
-              {/* Terms Checkbox */}
-              <div className="flex items-center pt-4 border-t border-gray-700">
-                <input
-                  type="checkbox"
-                  id="terms"
-                  className="form-checkbox h-5 w-5 text-purple-500 rounded focus:ring-purple-500 mr-3 bg-gray-700 border-purple-700"
-                  checked={termsAccepted}
-                  onChange={(e) => setTermsAccepted(e.target.checked)}
-                  required
-                />
-                <label htmlFor="terms" className="text-sm text-gray-300">Ao realizar uma compra, você concorda com todos os <a href="#" className="text-purple-400 hover:underline">termos de uso do site</a>.</label>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Order Summary and Confirmation */}
-          <div className="space-y-8">
-            {/* Order Summary */}
-            <div className="bg-gray-800 bg-opacity-60 rounded-lg shadow-xl p-6 space-y-6 border border-purple-600">
-              <h2 className="text-xl sm:text-2xl font-semibold text-purple-300">Resumo do Pedido</h2>
-              <div className="flex items-center space-x-4 p-4 bg-gray-700 rounded-md border border-purple-700">
-                <img src="/placeholder.svg" alt="Product Image" className="w-16 h-auto rounded-md object-cover border border-purple-600" />
-                <div className="flex-grow">
-                  <p className="text-lg font-bold text-gray-100">Plano Premium</p>
-                  <p className="text-lg font-semibold text-green-400">R$ 349,90</p>
-                </div>
-                {/* Quantity and Remove - Added for structure based on image, removed for simplicity */}
-                {/* <div className="flex items-center space-x-2">
-                  <button className="text-gray-400 hover:text-gray-100 transition">-</button>
-                  <span className="text-gray-100">1</span>
-                  <button className="text-gray-400 hover:text-gray-100 transition">+</button>
-                  <button className="text-red-400 hover:text-red-500 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                  </button>
-                </div>
-              </div>
-
-              <div className="mt-4 space-y-4">
-                 {/* Coupon section removed as requested */}
-                <div className="flex justify-between">
-                  <span>Sub Total:</span>
-                  <span>R$ 349,90</span>
-                </div>
-                <div className="flex justify-between font-bold text-xl text-green-400">
-                  <span>Total:</span>
-                  <span>R$ 349,90</span>
-                </div>
-              </div>
             </div>
 
-            {/* Security Message */}
-            <div className="text-sm text-center text-green-400 mb-6 flex items-center justify-center space-x-2 p-3 bg-green-900 bg-opacity-30 rounded-md border border-green-600">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a3 3 0 00-3-3H8zm.93 6.28a1 1 0 10-1.86-.56l-2 6A1 1 0 007 18h6a1 1 0 00.93-1.28l-2-6a1 1 0 00-1.86 0l-2 6z" clipRule="evenodd" />
-              </svg>
-              <span>Este pagamento é 100% seguro e criptografado</span>
-            </div>
+            {/* Terms Checkbox and Security Message */}
+            <div className="bg-white p-6 rounded-lg border border-purple-700 shadow-lg">
+               <div className="flex items-center mb-4 text-[#6C6C80]">
+                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#8F5FFF] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                 <p className="text-sm">
+                   Ao realizar uma compra, você concorda com todos os <a href="#" className="text-[#8F5FFF] hover:underline">termos de uso do site</a>.
+                 </p>
+               </div>
+               <div className="flex items-start">
+                 <input
+                   type="checkbox"
+                   id="terms"
+                   className="mr-2 mt-1 h-4 w-4 text-purple-600 bg-gray-800 border-gray-600 rounded focus:ring-purple-500"
+                   checked={termsAccepted} // Correctly bind checked state
+                   onChange={(e) => setTermsAccepted(e.target.checked)}
+                 />
+                 <label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer">
+                   Li e aceito os termos de uso
+                 </label>
+               </div>
+             </div>
 
             {/* Payment Button */}
             <button
-              className={`w-full py-3 text-xl font-bold rounded-md transition duration-300 focus:outline-none focus:ring-4 ${termsAccepted && firstName && lastName && email ? 'bg-purple-600 text-white border-2 border-blue-400 shadow-lg shadow-purple-500/50 hover:bg-purple-700 hover:shadow-xl hover:shadow-purple-600/60' : 'bg-gray-600 text-gray-400 cursor-not-allowed'}`}
+              className={`w-full text-xl font-bold py-4 px-6 rounded-lg transition duration-300 
+                          bg-primary text-primary-foreground hover:bg-primary/90
+                          ${!termsAccepted ? 'opacity-50 cursor-not-allowed' : ''}`}
               onClick={handleCheckout}
-              disabled={!termsAccepted || !firstName || !lastName || !email}
+              disabled={!termsAccepted}
             >
-              🔒 Criar Meu Presente Agora – R$349,90
+              🔒 Pagar R$21,90
             </button>
+
           </div>
 
-        </div>
+          {/* Right Column (Order Summary) */}
+          <div className="lg:col-span-1 space-y-8">
+            <div className="bg-[#F7F9FC] p-6 rounded-lg border border-blue-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+              <h2 className="text-2xl font-bold mb-4 text-[#1C1C1E]">Resumo do pedido</h2>
+              <div className="flex items-center mb-4 border-b border-blue-300 pb-4">
+                <img src={heroMockup} alt="Product Placeholder" className="w-16 h-16 object-cover rounded mr-4 border border-blue-300 flex-shrink-0" />
+                <div className="flex-grow">
+                  <p className="text-lg font-semibold text-[#1C1C1E]">Plano Premium</p> {/* Changed to Plano Simples */}
+                  <p className="text-md text-[#6C6C80]">R$ 21,90</p> {/* Corrected value */}
+                </div>
+                 {/* Quantity controls and delete button (optional, based on image) */}
+                 {/* Removed quantity controls and delete button as per instruction implicitly by removing the surrounding comment block */}
+              </div>
+              {/* Removed coupon section */}
 
-        {/* Security Badge */}
-        <div className="text-center mt-12">
-          <img src="/placeholder.svg" alt="Secure Checkout" className="mx-auto h-16 border border-purple-600 p-2 rounded-full bg-gray-800 bg-opacity-60" />
-          <p className="text-sm text-gray-400 mt-4">Checkout 100% Seguro com Stripe</p>
-        </div>
+              <div className="space-y-2 text-right pt-4">
+                <p className="text-xl font-bold text-[#1C1C1E]">Total: <span className="ml-4">R$ 21,90</span></p> {/* Corrected value */}
+              </div>
 
-        {/* Testimonials */}
-        <div className="mt-16">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-8 text-purple-300 drop-shadow-lg">O que nossos clientes dizem</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {/* Fake Testimonial 1 */}
-            <div className="bg-gray-800 bg-opacity-60 rounded-lg p-6 border border-purple-600 shadow-inner">
-              <div className="flex items-center mb-4 justify-center">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 .587l3.668 7.425L22 9.355l-5 4.876 1.174 6.874L12 17.3l-6.174 3.735L7 14.231l-5-4.876 6.332-1.343L12 .587z"/>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-200 italic text-center">"Incrivelmente transformador! O plano premium superou minhas expectativas."</p>
-              <p className="text-right font-bold mt-4 text-purple-400">- João S.</p>
-            </div>
-            {/* Fake Testimonial 2 */}
-            <div className="bg-gray-800 bg-opacity-60 rounded-lg p-6 border border-purple-600 shadow-inner">
-              <div className="flex items-center mb-4 justify-center">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 .587l3.668 7.425L22 9.355l-5 4.876 1.174 6.874L12 17.3l-6.174 3.735L7 14.231l-5-4.876 6.332-1.343L12 .587z"/>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-200 italic text-center">"Investimento que valeu cada centavo. O suporte é de primeira!"</p>
-              <p className="text-right font-bold mt-4 text-purple-400">- Rafael C.</p>
-            </div>
-            {/* Fake Testimonial 3 */}
-            <div className="bg-gray-800 bg-opacity-60 rounded-lg p-6 border border-purple-600 shadow-inner">
-              <div className="flex items-center mb-4 justify-center">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 .587l3.668 7.425L22 9.355l-5 4.876 1.174 6.874L12 17.3l-6.174 3.735L7 14.231l-5-4.876 6.332-1.343L12 .587z"/>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-200 italic text-center">"A diferença no meu dia a dia foi notável. Recomendo o premium a todos."</p>
-              <p className="text-right font-bold mt-4 text-purple-400">- Fernando P.</p>
+               {/* Security Message at the bottom of Order Summary */}
+               <div className="mt-6 flex items-center justify-center text-green-400 text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.21a4.008 4.008 0 010 5.656L10 17.657a2.003 2.003 0 01-2.828 0L3.343 13.343a4.008 4.008 0 010-5.656l4.95-4.95a4.008 4.008 0 015.656 0L19.618 7.39z" /></svg>
+                 Pagamento 100% Seguro
+               </div>
             </div>
           </div>
         </div>
 
-        {/* Footer - Optional: You might want a separate Footer component */}
-        <footer className="mt-16 text-center text-gray-400 text-sm">
-          <p>&copy; 2023 Sua Empresa. Todos os direitos reservados.</p>
-          {/* Add privacy policy, terms links etc. */}
-        </footer>
+         {/* Security Badge below the main grid */}
+         <div className="flex gap-3 items-center justify-items-center w-full  text-center mt-12 mb-8">
+            <img src={selo} alt="100% Seguro com Stripe" className="h-10" />
+            <p className='text-black'>100% Seguro com Stripe</p>
+         </div>
+
+
+{/* Testimonials below the security badge */}
+<div className="bg-[#F7F9FC] mb-8 p-6 rounded-lg border border-blue-500 shadow-[0_4px_20px_rgba(0,0,0,0.05)] mt-8">
+  <h2 className="text-2xl font-bold text-center mb-6 text-[#1C1C1E]">O que dizem nossos clientes</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {/* Array de depoimentos */}
+    {[
+      {
+        text: "Meu pai chorou quando viu. Eu nunca sei o que dar pra ele, mas dessa vez foi certeiro. Simplesmente perfeito!",
+        author: "Ricardo M",
+      },
+      {
+        text: "A ideia é genial, o site é lindo e o resultado ficou muito melhor do que eu imaginava. Recomendo pra todo mundo que quer fugir do presente clichê.",
+        author: "Luana V",
+      },
+      {
+        text: "Fiz no celular mesmo, em menos de 5 minutos. E a reação do meu pai? Inacreditável. Disse que foi o melhor presente que já ganhou.",
+        author: "Jéssica T",
+      },
+    ].map((testimonial, index) => ( // Itera sobre o array de depoimentos
+      <div key={index} className="bg-white p-6 rounded-md border border-blue-500 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+        <div className="flex items-center mb-3">
+          {[...Array(5)].map((_, i) => (
+            <svg
+              key={i}
+              className="w-5 h-5 text-yellow-400 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
+            </svg>
+          ))}
+        </div>
+        <p className="text-sm text-[#6C6C80] italic mb-4">
+          "{testimonial.text}" {/* Usa o texto do depoimento */}
+        </p>
+        <p className="text-sm font-semibold text-[#1C1C1E]">- {testimonial.author}</p> {/* Usa o autor do depoimento */}
+      </div>
+    ))}
+  </div>
+</div>
+
+
 
       </div>
+        <Footer/>
     </div>
   );
 };
-export default CheckoutPremium;
+
+export default CheckoutSimples;

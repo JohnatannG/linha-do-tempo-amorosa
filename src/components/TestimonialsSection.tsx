@@ -22,13 +22,13 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-[#0B0F1A]"> {/* Neon background */}
+    <section className="py-20 px-4 "> {/* Neon background */}
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white md:text-[#C5D3FF]"> {/* Neon title color */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 "> {/* Neon title color */}
             Pais emocionados, filhos felizes
           </h2>
-          <p className="text-lg sm:text-xl text-[#DADADA] px-4"> {/* Neon text color */}
+          <p className="text-lg sm:text-xl  px-4"> {/* Neon text color */}
             Veja o que nossos usuários estão dizendo
           </p>
         </div>
@@ -45,7 +45,6 @@ const TestimonialsSection = () => {
                 borderWidth: '2px', // Border width
                 borderStyle: 'solid', // Border style
                 boxShadow: '0 0 10px #6C63FF', // Initial subtle glow
-                animation: 'pulse 2s infinite', // Pulse animation
               }}
             >
               <div className="space-y-4">
@@ -75,17 +74,19 @@ const TestimonialsSection = () => {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center space-x-4 bg-card rounded-full px-6 py-3 shadow-card">
-            <div className="flex space-x-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i} className="text-yellow-400">⭐</span>
-              ))}
-            </div>
-            <span className="font-semibold text-foreground">4.9/5</span>
-            <span className="text-muted-foreground">•</span>
-            <span className="text-muted-foreground">+1.247 presentes criados</span>
-          </div>
-        </div>
+  <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 bg-card rounded-full px-6 py-3 ">
+    <div className="flex space-x-1">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span key={i} className="text-yellow-400">⭐</span>
+      ))}
+    </div>
+    <span className="font-semibold text-foreground">4.9/5</span>
+    <div>
+      <span className="text-muted-foreground">+1.247 presentes criados</span>
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
    

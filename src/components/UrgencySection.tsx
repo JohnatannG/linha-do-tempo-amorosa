@@ -97,10 +97,14 @@ const UrgencySection = () => {
 
           {/* CTA Button */}
           <div className="px-4 sm:px-0">
-            <Button variant="secondary" size="xl" className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto">
-              <span className="text-sm sm:text-base">Garantir Minha Vaga Agora</span>
-            </Button>
+            <a
+              href="#plans"
+              className="bg-white text-primary hover:bg-white/90 w-full  sm:w-full inline-flex items-center justify-center rounded-md text-base sm:text-base  py-5 font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+            >
+              Garantir Minha Vaga Agora
+            </a>
           </div>
+
 
           <p className="text-sm opacity-75">
             ⚡ Entrega imediata após confirmação do pagamento

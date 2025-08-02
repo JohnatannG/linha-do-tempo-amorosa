@@ -50,7 +50,7 @@ const ExamplesSection = () => {
 
         <div className="mt-12 text-center">
           <p className="text-muted-foreground mb-6">
-            + Mais de 200 frases prontas disponíveis na plataforma
+            + Mais de 20 frases prontas disponíveis na plataforma
           </p>
         </div>
       </div>

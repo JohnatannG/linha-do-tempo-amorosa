@@ -19,7 +19,7 @@ const PlansSection = () => {
       cta: "Criar Meu Presente Agora",
       variant: "outline" as const,
       popular: false,
-      checkoutPath: "/checkout-simples" // Adicione o caminho de checkout
+      checkoutPath: "/checkout-simples"
     },
     {
       name: "Premium",
@@ -36,12 +36,12 @@ const PlansSection = () => {
       cta: "Criar Meu Presente Agora",
       variant: "cta" as const,
       popular: true,
-      checkoutPath: "/checkout-premium" // Adicione o caminho de checkout
+      checkoutPath: "/checkout-premium"
     }
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 to-accent/5">
+    <section id="plans" className="py-20 px-4 bg-gradient-to-br from-secondary/5 to-accent/5">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12 sm:mb-16 animate-fade-in">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
@@ -96,7 +96,7 @@ const PlansSection = () => {
                 <Button
                   variant={plan.variant}
                   size="lg"
-                  className="w-full"
+                  className="w-full text-sm font-semibold"
                   onClick={() => navigate(plan.checkoutPath)} // Adicione o onClick para navegação
                 >
                   {plan.cta}

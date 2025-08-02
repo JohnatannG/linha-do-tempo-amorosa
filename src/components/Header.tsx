@@ -21,10 +21,13 @@ const Header = ({ isCheckoutHeader }: HeaderProps) => {
         </div>
 
         {!isCheckoutHeader && ( // Oculta o botão "Criar Meu Presente" no checkout
-          <Button variant="cta" size="default" className="animate-glow-pulse text-sm sm:text-base px-3 sm:px-4">
-            <span className="hidden sm:inline">Criar Meu Presente</span>
-            <span className="sm:hidden">Criar</span>
-          </Button>
+          <a
+          href="#plans"
+          className="animate-glow-pulse text-sm sm:text-base p-3 inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+        >
+          <span className="sm:inline">Criar Meu Presente</span>
+        </a>
+        
         )}
       </div>
     </header>

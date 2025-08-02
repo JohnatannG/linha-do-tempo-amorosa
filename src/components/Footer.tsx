@@ -17,11 +17,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-foreground">Contato</h4>
             <div className="space-y-2">
-              <a href="mailto:suporte@pai360.com" className="block text-muted-foreground hover:text-primary transition-colors">
-                suporte@pai360.com
-              </a>
-              <a href="tel:+5511999999999" className="block text-muted-foreground hover:text-primary transition-colors">
-                (62) 99121-0362
+              <a href="tel:+556299121-0362" className="block text-muted-foreground hover:text-primary transition-colors">
+                (62) 99121-0362 - WhatsApp
               </a>
               <p className="text-muted-foreground">
                 Atendimento de seg. à sex. das 9h às 18h

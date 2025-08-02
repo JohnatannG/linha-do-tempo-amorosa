@@ -23,14 +23,13 @@ const FinalCTASection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0">
-            <Button 
-              variant="secondary" 
-              size="xl" 
-              className="bg-white text-primary hover:bg-white/90 shadow-glow group w-full sm:w-auto sm:min-w-[280px]"
+          <a
+              href="#plans"
+              className="w-full text-base sm:text-base p-6 inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 bg-white hover:bg-white/90 text-black"
             >
-              <span className="text-sm sm:text-base">Criar Meu Presente Agora</span>
+              <span className="sm:inline">Criar Meu Presente</span>
               <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </Button>
+            </a>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm opacity-75 px-4 sm:px-0">

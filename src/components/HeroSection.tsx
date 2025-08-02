@@ -23,11 +23,18 @@ const HeroSection = () => {
               </p>
             </div>
             
+
+
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Button variant="cta" size="xl" className="group w-full sm:w-auto">
-                <span className="text-sm sm:text-base">Criar presente agora</span>
-                <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-              </Button>
+
+            <a
+              href="#plans"
+              className="w-full animate-glow-pulse text-sm sm:text-base p-6 inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <span className="sm:inline">Criar Meu Presente</span>
+              <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+
             </div>
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
